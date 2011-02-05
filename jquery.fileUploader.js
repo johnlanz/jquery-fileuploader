@@ -1,15 +1,16 @@
 /*
 *	Class: fileUploader
 *	Use: Upload multiple files the jQuery way
-*	Author: Michael Laniba (http://pixelcone.com)
+*	Author: John Lanz (http://pixelcone.com)
 *	Version: 1.0
 */
 
 (function($) {
-	$.fileUploader = {version: '1.0'};
+	$.fileUploader = {version: '1.1'};
 	$.fn.fileUploader = function(config){
 		
 		config = $.extend({}, {
+			limit: '',
 			imageLoader: '',
 			buttonUpload: '#pxUpload',
 			buttonClear: '#pxClear',
@@ -17,10 +18,14 @@
 			errorOutput: 'Failed',
 			inputName: 'userfile',
 			inputSize: 30,
-			allowedExtension: 'jpg|jpeg|gif|png'
+			allowedExtension: 'jpg|jpeg|gif|png',
+			callback: function() {
+				
+			}
 		}, config);
 		
 		var itr = 0; //number of files to uploaded
+		var $limit = 1;
 		
 		//public function
 		$.fileUploader.change = function(e){
@@ -42,7 +47,10 @@
 				'<div class="status">Pending...</div></div>';
 			
 			$("#px_display").append(display);
-			px.appendForm();
+			if (config.limit == '' || $limit < config.limit) {
+				px.appendForm();
+			}
+			$limit++;
 			$(e).hide();
 		}
 		
@@ -75,6 +83,7 @@
 							$(id + "_text .status").html(up_output);
 							$(e).remove();
 							$(config.buttonClear).removeAttr("disabled");
+							config.callback($(this));
 						});
 					}
 				});
@@ -82,6 +91,10 @@
 		});
 		
 		$(".close").live("click", function(){
+			$limit--;
+			if ($limit == config.limit) {
+				px.appendForm();
+			}
 			var id = "#" + $(this).parent().attr("title");
 			$(id+"_frame").remove();
 			$(id).remove();
@@ -96,6 +109,7 @@
 				$("#px_display").html("");
 				$("#pxupload_form").html("");
 				itr = 0;
+				$limit = 1;
 				px.appendForm();
 				$('#px_button input').attr("disabled","disabled");
 				$(this).show();

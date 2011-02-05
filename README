@@ -1,4 +1,4 @@
-Version 1.0
+Version 1.1
 
 Tutorial
 
@@ -44,6 +44,7 @@ Plugins Option:
 
 	$(function(){
    		$('#yourInputFileId').fileUploader({
+			limit: '',
   			imageLoader: '',
    			buttonUpload: '#pxUpload',
    			buttonClear: '#pxClear',

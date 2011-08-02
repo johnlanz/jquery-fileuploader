@@ -1,57 +1,15 @@
+
+For Details Visit:
+http://pixelcone.com/jquery/ajax-file-upload-script/
+
+Changelog:
+
+Version 1.2:
+	1.	handles other form input
+	2.	Added beforeUpload, beforeEachUpload, afterUpload, and afterEachUpload callbacks
+	3.	Removed callback, inputName, and inputSize config
+	4.	Can now initialize multiple script in a single page
+
 Version 1.1
 
-Tutorial
-
-Load CSS and Javascript: (Inside <head> tag)
-<link href="fileUploader.css" rel="stylesheet" type="text/css" />
-<script src="jquery.js" type="text/javascript"></script>
-<script src="jquery.fileUploader.js" type="text/javascript"></script>
-       
-
-Html: (The native form for uploading your files)
-<form action="/path/to/upload/controller" method="post" enctype="multipart/form-data">
-      <input id="yourInputFileId" name="yourfilename" type="file" />
-      <br /><br />
-   
-      <input type="submit" value="Upload" id="pxUpload" />
-      <input type="reset" value="Clear" id="pxClear" />
- </form>
-       
-
-Upload Controller or equivalent back end script that handles the uploading of files
-
-	if (file upload is successful) {
-     		//ouput 'success' inside <div id="output">
-   		echo '<div id="output">success</div>';
-  		//then output your message (optional)
-  		echo '<div id="message">Your file success message</div>'
-  	} else {
-  		//ouput 'failed' inside <div id="output">
-  		echo '<div id="output">failed</div>';
- 	}
-       
-
-
-Initialize the plugin script
-	<script type="text/javascript">
-   		$(function(){
-   			$('#yourInputFileId').fileUploader();
-  		});
-  	</script>       
-
-
-Plugins Option:
-
-	$(function(){
-   		$('#yourInputFileId').fileUploader({
-			limit: '',
-  			imageLoader: '',
-   			buttonUpload: '#pxUpload',
-   			buttonClear: '#pxClear',
-   			successOutput: 'File Uploaded',
-  			errorOutput: 'Failed',
-   			inputName: 'userfile',
-  			inputSize: 30,
-  			allowedExtension: 'jpg|jpeg|png|gif'
-  		});
-  	});
+Version 1.0

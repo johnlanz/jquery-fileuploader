@@ -1,12 +1,8 @@
-#px_display {
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
 .uploadData {
 	padding: 5px;
 	width: 420px;
-	margin-top: 5px;
-	margin-bottom: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	background-color: #F0F8FF;
 	border: 1px solid #B0D8FF;
 	position: relative;
@@ -29,7 +25,7 @@
 	padding-left: 10px;
 }
 .uploadData .close {
-	background-image: url(close.gif);
+	background-image: url(../img/close.gif);
 	height: 16px;
 	width: 16px;
 	position: absolute;
@@ -40,7 +36,7 @@
 .uploadData .close:hover {
 	background-position: 16px 0px;
 }
-#px_button input{
+.px_button input, .px_button button{
 	margin-right: 6px;
 	padding: 5px;
 }

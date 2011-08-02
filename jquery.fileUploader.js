@@ -34,7 +34,7 @@
 		var pxButton = 'px_button' + $.fileUploader.count;
 		var wrapper = ' \
 			<div id="'+ pxUploadForm +'"></div> \
-			<div id="'+ pxButton +'"></div> \
+			<div id="'+ pxButton +'" class="px_button"></div> \
 		';
 		pxUploadForm = '#' + pxUploadForm;
 		pxButton = '#' + pxButton;
@@ -248,10 +248,12 @@
 					$(id).submit();
 					$(id +'_frame').load(function(){
 						$(id + '_text .loader').hide();
+						
+						data = $(this).contents().find('body').html();
 						output = $(this).contents().find('#output').text();
 						
 						//trigger after each upload
-						config.afterEachUpload($this, output);
+						config.afterEachUpload(data, output, id + '_text');
 						
 						if (output == 'success'){
 							$(id + '_text').css('background-color', '#F0F8FF');

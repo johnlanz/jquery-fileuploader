@@ -5,10 +5,11 @@ http://pixelcone.com/jquery/ajax-file-upload-script/
 Changelog:
 
 Version 1.2:
-	1.	handles other form input
-	2.	Added beforeUpload, beforeEachUpload, afterUpload, and afterEachUpload callbacks
-	3.	Removed callback, inputName, and inputSize config
-	4.	Can now initialize multiple script in a single page
+	1. handles other form input
+	2. Added beforeUpload, beforeEachUpload, afterUpload, and afterEachUpload callbacks
+	3. Removed callback, inputName, and inputSize config
+	4. Can now initialize multiple script in a single page
+	5. Restructured Code and use jquery 1.4 features
 
 Version 1.1
 

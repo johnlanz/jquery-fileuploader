@@ -25,7 +25,7 @@
 	padding-left: 10px;
 }
 .uploadData .close {
-	background-image: url(../img/close.gif);
+	background-image: url(close.gif);
 	height: 16px;
 	width: 16px;
 	position: absolute;
@@ -37,6 +37,7 @@
 	background-position: 16px 0px;
 }
 .px_button input, .px_button button{
+	margin-top: 10px;
 	margin-right: 6px;
 	padding: 5px;
 }

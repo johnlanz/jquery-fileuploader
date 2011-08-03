@@ -24,7 +24,7 @@
 			beforeUpload: function(){}, //trigger after the submit button is click: before upload
 			beforeEachUpload: function(){}, //callback before each file has been uploaded ::: returns each Form
 			afterUpload: function(){},
-			afterEachUpload: function(){}, //callback after each file has been uploaded
+			afterEachUpload: function(){} //callback after each file has been uploaded
 			
 		}, config);
 		
@@ -90,6 +90,11 @@
 				
 				//Show only the file input
 				px.showInputFile( '#'+formId );
+				
+				//This is not good but i left no choice cause live function is not working on IE
+				$(selector).change(function() {
+					uploadChange($(this));
+				});
 			},
 			
 			//Show only the file input
@@ -154,11 +159,10 @@
 		px.init();
 		
 		/*
-		*	Events
+		*	On Change of upload file
 		*/
 		
-		$(this).live('change', function() {
-			
+		function uploadChange($this) {
 			//remove upload text after uploaded
 			var uploadText = $(pxUploadForm).data('upload');
 			if (uploadText) {
@@ -166,10 +170,10 @@
 				$(pxUploadForm).removeData('upload');
 			}
 			
-			var $form = $(this).parents('form');
+			var $form = $this.parents('form');
 			
 			//validate file
-			var filename = px.validateFile( $(this).val() );
+			var filename = px.validateFile( $this.val() );
 			if (filename == -1){
 				alert ('Invalid file!');
 				$(e).val('');
@@ -209,8 +213,8 @@
 			}
 			
 			//Callback on file Changed
-			config.onFileChange(this, $form);
-		});
+			config.onFileChange($this, $form);
+		}
 		
 		/*
 		*	Process form Upload

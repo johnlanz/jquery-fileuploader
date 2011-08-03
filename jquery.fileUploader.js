@@ -269,7 +269,7 @@
 						output += '<br />' + $(this).contents().find('#message').text();
 						$(id + '_text .status').html(output);
 						
-						$this.remove();
+						$(id).remove();
 						$(id + '_frame').remove();
 						
 						$(config.buttonClear, pxButton).removeAttr('disabled');

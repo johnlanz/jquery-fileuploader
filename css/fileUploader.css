@@ -1,0 +1,101 @@
+.px-form-input {
+	float: left;
+}
+.px-buttons {
+	float: left;
+}
+
+.px-input-button {
+	overflow: hidden;
+}
+
+.px-input-button input {
+	position:absolute;
+	top: 0;
+	right: 0;
+	-moz-opacity:0;
+	filter:alpha(opacity: 0);
+	opacity: 0;
+	cursor: pointer;
+	border-right: 100px solid #FFF;
+	border-bottom: 100px solid #FFF;
+	direction: ltr;
+	margin: 0;
+	padding: 0;
+	-o-transform: translate(250px, -50px) scale(1);
+	-moz-transform: translate(-300px, 0) scale(4);
+}
+
+.upload-data {
+	padding: 5px;
+	width: 420px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	position: relative;
+}
+
+.upload-data.pending {
+	border: 1px solid #fbd850;
+}
+
+.upload-data.uploading {
+	border: 1px solid #EDBE05;
+}
+
+.upload-data.success {
+	border: 1px solid #CCCCCC;
+}
+
+.upload-data.error, .upload-data.cancel {
+	border: 1px solid #FF0000;
+}
+
+.px-widget ul.actions {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	margin: 0;
+    padding: 0;
+}
+
+.px-widget ul.actions li {
+	cursor: pointer;
+	float: left;
+	list-style: none outside none;
+	margin: 2px;
+	padding: 4px;
+	position: relative;
+}
+
+.upload-data .filename {
+	padding-right: 10px;
+	width: 120px;
+}
+
+.upload-data .status {
+	clear: both;
+}
+
+/* jQuery UI progressbar */
+.progress {
+	display: none;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.progressBar {
+	float: left;
+	width: 280px;
+	height: 22px;
+}
+.percentage {
+	float: left;
+	padding-left: 5px;
+	width: 50px;
+}
+.uploading .ui-progressbar-value {
+	background-image: url(ui-lightness/images/pbar-ani.gif);
+}
+
+.px-widget .ui-button {
+	height: 40px;
+}

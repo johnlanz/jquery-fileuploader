@@ -3,6 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>File Uploader</title>
+<link href="css/reset.css" rel="stylesheet" type="text/css" />
+
 <style type="text/css">
 body {
 	margin: 10px;
@@ -11,24 +13,33 @@ body {
 #main_container{
 	font-size: 1.4em;
 }
+h2 {
+	font-size: 2em;
+	padding-bottom: 20px;
+}
 </style>
-<link href="fileUploader.css" rel="stylesheet" type="text/css" />
-<script src="jquery-1.6.2.min.js" type="text/javascript"></script>
-<script src="jquery.fileUploader.js" type="text/javascript"></script>
+
+<link href="css/ui-lightness/jquery-ui-1.8.14.custom.css" rel="stylesheet" type="text/css" />
+<link href="css/fileUploader.css" rel="stylesheet" type="text/css" />
+
+<script src="js/jquery-1.6.2.min.js" type="text/javascript"></script>
+<script src="js/jquery-ui-1.8.14.custom.min.js" type="text/javascript"></script>
+<script src="js/jquery.fileUploader.js" type="text/javascript"></script>
+
 </head>
 
 <body>
 <div id="main_container">
-	<form action="upload.php" method="post" enctype="multipart/form-data">
-	
-		<input id="uploader" name="userfile" type="file" />
+	<h2>jQuery Fileuploder Plugin</h2>
+	<form action="/upload/controller" method="post" enctype="multipart/form-data">
+		<input type="file" name="file" class="fileUpload" multiple>
 		
-		<input type="submit" value="Upload" id="pxUpload" />
-		<input type="reset" value="Clear" id="pxClear" />
+		<button id="px-submit" type="submit">Upload</button>
+		<button id="px-clear" type="reset">Clear</button>
 	</form>
 	<script type="text/javascript">
-		$(function(){
-			$('#uploader').fileUploader();
+		jQuery(function($){
+			$('.fileUpload').fileUploader();
 		});
 	</script>
 </div>

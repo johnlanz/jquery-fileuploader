@@ -1,6 +1,4 @@
 
-For Details Visit:
-http://pixelcone.com/jquery/ajax-file-upload-script/
 
 Changelog:
 

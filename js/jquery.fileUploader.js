@@ -181,9 +181,22 @@
 				return file;
 			},
 			
+			getFileExtension: function(file) {
+                            
+                            var re = /(?:\.([^.]+))?$/;
+                            
+                            var file_extension = re.exec(file)[1];
+                            
+                            return file_extension;
+                            
+                            
+                        },
+                        
 			validateFileName: function(filename) {
 				var extensions = new RegExp(config.allowedExtension + '$', 'i');
-				if (extensions.test(filename)){
+				var file_extension = px.getFileExtension(filename);
+                                
+				if (extensions.test(file_extension)){
 					return filename;
 				} else {
 					return -1;

@@ -279,9 +279,16 @@
 				}
 			});
 			
+                        var thumb = null;
 			//append size of the file after filename
 			if (isHtml5) {
 				filename += ' (' + px.getFileSize($this) + ')';
+                                if($this.type.match(/image.*/)){
+	                           thumb = document.createElement("img");
+	                           thumb.classList.add("uploadThumb");
+	                           thumb.height = 75;
+	                           thumb.file = $this;
+                                }
 			}
 			
 			//DIsplay syled markup				
@@ -308,7 +315,14 @@
 					<div class="status">Pending...</div> \
 				')
 			);
-			
+
+                        if (isHtml5 && thumb!=null) {
+	                   $(pxUploadForm).find(".actions").after(thumb);
+                           var reader = new FileReader();
+                           reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(thumb);
+                           reader.readAsDataURL($this);
+                        }
+
 			//Store input in form
 			$form.data('input', $this);
 			

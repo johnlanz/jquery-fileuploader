@@ -2,11 +2,12 @@
 *	Class: fileUploader
 *	Use: Upload multiple files using jquery
 *	Author: John Laniba (http://pixelcone.com)
-*	Version: 1.3
+*	Version: 1.4
+*	Version: 1.4 by Michael Gollner
 */
 
 (function($) {
-	$.fileUploader = {version: '1.3', count: 0};
+	$.fileUploader = {version: '1.4', count: 0};
 	$.fn.fileUploader = function(config){
 		
 		config = $.extend({}, {
@@ -18,6 +19,7 @@
 			allowedExtension: 'jpg|jpeg|gif|png',
 			timeInterval: [1, 2, 4, 2, 1, 5], //Mock percentage for iframe upload
 			percentageInterval: [10, 20, 30, 40, 60, 80],
+                        presentationContainer: '',
 			
 			//Callbacks
 			onValidationError: null,	//trigger if file is invalid
@@ -82,7 +84,12 @@
 				px.form = $(e).parents('form');
 				
 				//prepend wrapper markup
-				px.form.before(wrapper);
+                                if(config.presentationContainer == ''){
+                                    px.form.before(wrapper);
+                                }
+                                else {
+                                    $( config.presentationContainer ).html(wrapper);
+                                }
 				
 				//Wrap input button
 				$(e).wrap('<div class="px-input-button" />');
@@ -636,7 +643,7 @@
 		/*
 		* Individual Upload
 		*/
-		$('.upload', pxUploadForm).live('click', function(){
+		$('.upload', pxUploadForm).on('click',this.selector, function(){
 			
 			$form = $(this).parents('.upload-data').children('form');
 			if ($form.length > 0) {
@@ -661,7 +668,7 @@
 		});
 		
 		//Button Clear Event
-		$(config.buttonClear, pxButton).live('click', function(){
+		$(config.buttonClear, pxButton).on('click', this.selector, function(){
 			$(pxUploadForm).fadeOut('slow',function(){
 				$(this).empty();
 				$(this).show();
@@ -678,7 +685,7 @@
 			});
 		});
 		
-		$('.delete', pxUploadForm).live('click', function(){
+		$('.delete', pxUploadForm).on('click',this.selector, function(){
 			
 			limit++;
 			
@@ -700,7 +707,7 @@
 		/*
 		*	Cancel individual upload
 		*/
-		$('.cancel', pxUploadForm).live('click', function() {
+		$('.cancel', pxUploadForm).on('click', this.selector, function() {
 			if (jqxhr) {
 				jqxhr.abort();
 			}
@@ -715,7 +722,7 @@
 		/*
 		*	Cancel all uploads
 		*/
-		$('#px-cancel', pxButton).live('click', function(){
+		$('#px-cancel', pxButton).on('click',this.selector, function(){
 			stopUpload = true;
 			if (jqxhr) {
 				jqxhr.abort();
@@ -730,7 +737,7 @@
 		});
 		
 		/* Icons hover */
-		$(".px-widget .actions li").live("mouseover mouseout", function(event) {
+		$(".px-widget .actions li").on("mouseover mouseout",this.selector, function(event) {
 			if ( event.type == "mouseover" ) {
 				$(this).addClass('ui-state-hover');
 			} else {
